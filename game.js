@@ -5,7 +5,7 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        playGame(button.textContent);
+        playRound(button.textContent);
     })
 })
 
@@ -29,12 +29,8 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice(choice) {
-
-    return humanChoice;
-}
-
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
+    const computerChoice = getComputerChoice();
     humanChoice = humanChoice.toUpperCase();
 
     playerWins = ( (humanChoice === "ROCK" && computerChoice === "SCISSORS") 
@@ -56,10 +52,4 @@ function playRound(humanChoice, computerChoice) {
     console.log(`User: ${humanScore}; Computer: ${computerScore}`);
 }
 
-
-function playGame(humanSelection) {
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-}
 
