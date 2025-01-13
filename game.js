@@ -1,8 +1,16 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playGame(button.textContent);
+    })
+})
+
 function getComputerChoice() {
-    /*Compute a random number between 0-2 andassign it to a variable randomValue
+    /*Compute a random number between 0-2 and assign it to a variable randomValue
       Check each case against the variable randomValue
       If 0, return rock
       If 1, return paper
@@ -21,12 +29,7 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    /*Prompt the user for a value "Rock", "Paper", "Scissors" and assign it to a variable
-      Return the inputted vale
-    */
-
-    let humanChoice = prompt("Select Rock, Paper, or Scissors:");
+function getHumanChoice(choice) {
 
     return humanChoice;
 }
@@ -54,13 +57,9 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
-function playGame() {
-    //for(let round = 1; round <=5; round++) {
-        const humanSelection = getHumanChoice();
+function playGame(humanSelection) {
         const computerSelection = getComputerChoice();
 
         playRound(humanSelection, computerSelection);
-    //}
 }
 
-playGame();
