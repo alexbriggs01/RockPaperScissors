@@ -1,13 +1,14 @@
 let humanScore = 0;
 let computerScore = 0;
+let won = false;
 
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         playRound(button.textContent);
-    })
-})
+    });
+});
 
 function getComputerChoice() {
     /*Compute a random number between 0-2 and assign it to a variable randomValue
@@ -33,23 +34,38 @@ function playRound(humanChoice) {
     const computerChoice = getComputerChoice();
     humanChoice = humanChoice.toUpperCase();
 
+    const results = document.querySelector("#result");
+    const score = document.querySelector("#score");
+    const winner = document.querySelector("#winner");
+
     playerWins = ( (humanChoice === "ROCK" && computerChoice === "SCISSORS") 
                   || (humanChoice === "SCISSORS" && computerChoice === "PAPER") 
                   || (humanChoice === "PAPER" && computerChoice === "ROCK")
                  );
 
     if(humanChoice === computerChoice) {
-        console.log(`${humanChoice} ties with ${computerChoice}`);
+        results.textContent = `${humanChoice} ties with ${computerChoice}`;
     }
     else if(playerWins) {
-        console.log(`${humanChoice} beats ${computerChoice}`);
+        results.textContent = `${humanChoice} beats ${computerChoice}`;
         humanScore++;  
     }
     else {
-        console.log(`${humanChoice} loses to ${computerChoice}`);
+        results.textContent = `${humanChoice} loses to ${computerChoice}`;
         computerScore++;
     }
-    console.log(`User: ${humanScore}; Computer: ${computerScore}`);
+
+
+    score.textContent = `User: ${humanScore}; Computer: ${computerScore}`;
+
+    if(humanScore === 5 && won === false){
+        winner.textContent = "Congratulations! You win!";
+        won = true;
+    }
+    else if(computerScore === 5 && won === false){
+        winner.textContent = "Too bad. Reload and try again."
+        won = true;
+    }
 }
 
 
