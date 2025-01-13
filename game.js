@@ -55,12 +55,12 @@ function playRound(humanChoice, computerChoice) {
 
 
 function playGame() {
-    for(let round = 1; round <=5; round++) {
+    //for(let round = 1; round <=5; round++) {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
         playRound(humanSelection, computerSelection);
-    }
+    //}
 }
 
 playGame();
